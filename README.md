@@ -5,6 +5,9 @@ How To: Install Red Hat Enterprise Linux on Raspberry Pi
 
 ---
 
+<details>
+  <summary>How I come up with this thought...</summary>
+
 Seems like a compensation for [the killing of CentOS](https://the-report.cloud/ibms-red-hat-just-killed-centos-as-we-know-it-with-centos-stream-stability-goes-out-of-the-door),
 Red Hat announced a [no-cost RHEL individual subscription](https://developers.redhat.com/articles/faqs-no-cost-red-hat-enterprise-linux).
 That is to say, you can run genuine RHEL, legally, for free.
@@ -32,7 +35,9 @@ Luckily after a few days of effort,
 I managed to find a way to install RHEL use it as a springboard.
 The instructions are as follows.
 
-# Prerequisite
+</details>
+
+## Prerequisite
 
 * A Raspberry Pi 4B, 400 or 3B/+
   * Only tested on 4B
@@ -41,14 +46,59 @@ The instructions are as follows.
 * Red Hat Individual Subscription
 * Internet connection
 
-# Registering for Red Hat Individual Subscription
+## Registering for Red Hat Individual Subscription
 
-# Installing Oracle Linux
+As mentioned above, [register for Red Hat Individual Subscription](https://developers.redhat.com/register).
 
-# Patching and Running `convert2rhel`
+After the registration process, you should see the following subscriptions
+on [your management page](https://access.redhat.com/management/subscriptions):
 
-# Registering the System
+![Subscriptions](img/004-rh-sub.jpg)
 
-# Replacing Repositories of Packages
+Registration is necessary since we need to update packages from RHEL's repositories.
 
-# FAQ
+## Installing Oracle Linux
+
+[Download Oracle Linux](https://www.oracle.com/linux/downloads/linux-arm-downloads.html) first.
+
+Then, find a flashing tool you like.
+Generally, [Raspberry Pi Imager](https://www.raspberrypi.com/software/#:~:text=Pi%20OS%20using-,Raspberry%C2%A0Pi%C2%A0Imager,-Raspberry%20Pi%20Imager)
+is a good choice, but I personally prefer [Etcher](https://etcher.io).
+
+The downloaded image has been compressed in `xz` format. You don't need to decompress the file, the tool will handle it.
+
+![Flashing](img/005-flash.jpg)
+
+<details>
+  <summary>You probably need an SSD...</summary>
+
+### SSD vs SD Card
+
+Oracle Linux comes with `btrfs` for its root filesystem, which is horribly slow for SD card and USB drive.
+
+`btrfs` has ruined a total of 5 SDs and USB drives, just for this tutorial.
+So I'd recommend use a SSD if you could.
+
+As for SD cards, `f2fs` should be a much better choice, if possible.
+
+</details>
+
+Plug in your system drive, and boot the pi.
+Then go to your router's DHCP clients page, find the IP address of your Pi.
+
+![DHCP](img/006-dhcp.jpg)
+
+`ssh` to your Pi using username `root` and password `oracle`.
+You will be asked to change the password immediately.
+
+![SSH](img/007-first-ssh.jpg)
+
+## Preparing the system
+
+## Patching and Running `convert2rhel`
+
+## Registering the System
+
+## Replacing Repositories of Packages
+
+## FAQs
