@@ -95,6 +95,58 @@ You will be asked to change the password immediately.
 
 ## Preparing the system
 
+### Expand the root filesystem
+
+The decompressed prebuilt image is about 3.89 GB. After installation, you will be left with about 300 MB.
+That's not enough for any of the following operations, so we need to extend the system partition.
+
+We will use `parted` to do that.
+
+First, install it:
+
+```shell
+dnf install -y parted
+```
+
+> Note: you do not need to run `dnf update` like you do on Debian/Ubuntu.
+> RPM will retrieve the latest package indexes before any installation.
+> 
+> `dnf update` is more equivalent to `apt update && apt upgrade`.
+
+![Install parted](img/008-install-parted.jpg)
+
+Then, expand the root filesystem:
+
+```shell
+parted /dev/sda
+
+# print
+# resizepart 3
+# q
+```
+
+![parted](img/009-parted.jpg)
+
+And don't forget to inform `btrfs` of the changes:
+
+```shell
+btrfs filesystem resize max /
+```
+
+### Update `kernel-uek`
+
+The one and only package we are going to reserve is `kernel-uek`.
+`kernel-uek`, short for [Unbreakable Enterprise Kernel](https://docs.oracle.com/en/operating-systems/uek/),
+is a Linux kernel built by Oracle (more details link above).
+Since Oracle Linux is the only distro that supports Pi,
+its kernel is consequently the only one that does it.
+
+```shell
+dnf update -y kernel-uek
+```
+
+![Update kernel-uek](img/010-kernel-uek.jpg)
+
 ## Patching and Running `convert2rhel`
 
 ## Registering the System
