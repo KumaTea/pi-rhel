@@ -1,6 +1,8 @@
 # pi-rhel
 How To: Install Red Hat Enterprise Linux on Raspberry Pi
 
+> 这篇指南 [**也有一份中文版**](https://blog.kmtea.eu/p/220710-pi-rhel) 放在 [我的 blog](https://blog.kmtea.eu)上
+
 ![neofetch](img/001-neofetch.jpg)
 
 ---
@@ -212,7 +214,7 @@ But on the Pi, we need to manually download from Red Hat's website:
 
 ![RHEL cert](img/014-rhel-cert.jpg)
 
-Select `Red Hat Enterprise Linux Server` in _Choose your product_,
+Select `Red Hat Enterprise Linux` in _Choose your product_,
 find **`Red Hat Enterprise Linux for ARM 64`**,
 select version and architecture, and download the cert.
 
