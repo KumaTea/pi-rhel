@@ -379,3 +379,16 @@ However, our system has not prepared for upgrading it through
 By the time you read this, Oracle Linux has just released OL9 for the Pi too,
 but `convert2rhel` has not.
 Maybe we should wait for a few more days, and approach in a similar way.
+
+---
+
+## Updates
+
+### Update 01
+
+> 2022-07-10
+
+I just found that [Rocky Linux](https://rockylinux.org), another RHEL alternative powered by the community, also [provides images for Raspberry Pi](https://rockylinux.org/alternative-images).
+
+If you prefer communities over commercials (e.g. Oracle), don't hesitate to switch to that.
+The general approaches should be the same.
